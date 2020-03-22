@@ -37,6 +37,6 @@ class DockingStation
   end
 
   def working_bikes
-    @bikes.select { |bike| bike.broken == false }
+    @bikes.select { |bike| bike.broken? == false }
   end
 end
