@@ -2,13 +2,12 @@ require 'docking_station'
 
 describe DockingStation do
   it 'responds to release_bike' do
-    expect(subject). to respond_to :release_bike
+    expect(subject).to respond_to :release_bike
   end
-  # above - checks if method exists and is responding to the class
-  # one liner syntax :  it { is_expected.to respond_to :release_bike }
+
   it 'releases a new bike if bike is working' do
     bike = Bike.new
-    expect(bike).to be_working
+    expect(bike.working).to be(true)
   end
 
   it { is_expected.to respond_to(:dock).with(1).argument }
@@ -18,12 +17,6 @@ describe DockingStation do
     bike = Bike.new
     expect(subject.dock(bike)).to eq [bike]
   end
-
-  # deleted below test as it is the same as above
-  # it 'returns docked bikes' do
-  #   bike = Bike.new
-  #   expect(subject.dock(bike)).to eq [bike]
-  # end
 
   it 'has a deafault capacity' do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
@@ -43,12 +36,14 @@ describe DockingStation do
       expect { subject.release_bike }.to raise_error 'No bikes available'
     end
 
-    # it 'does not release a bike when broken' do
+    it 'does not release a bike when broken' do
+      bike = Bike.new()
+      bike.working = false;
+      subject.dock(bike);
 
-    #   expect(subject.release_bike)
-      
-    # end 
-    # end
+      expect { subject.release_bike }.to raise_error "Can not release, bike broken"
+    end 
+    
   end
 
   describe 'dock' do
@@ -62,7 +57,9 @@ describe DockingStation do
     subject { DockingStation.new }
       let(:bike) { Bike.new }
     it 'defaults capacity' do
-      described_class::DEFAULT_CAPACITY.times {subject.dock(bike)} 
+      described_class::DEFAULT_CAPACITY.times do 
+        subject.dock(bike)
+      end
       expect { subject.dock(bike) }.to raise_error 'Docking station is full'
     end
   end
