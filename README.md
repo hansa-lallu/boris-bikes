@@ -77,8 +77,8 @@ $> rspec
 
 ```
 $ irb
-  > require './lib/dockingstation.rb'
-  > docking_station = DockingStation.new
+  > require './lib/docking_station.rb'
+  > station = DockingStation.new
   > bike = Bike.new
 ```
   

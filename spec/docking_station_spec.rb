@@ -7,7 +7,7 @@ describe DockingStation do
 
   it 'releases a new bike if bike is working' do
     bike = Bike.new
-    expect(bike.working).to be(true)
+    expect(bike.broken).to be(false)
   end
 
   it { is_expected.to respond_to(:dock).with(1).argument }
@@ -33,17 +33,17 @@ describe DockingStation do
     it 'raises an error when there are no bikes available' do
       DockingStation::DEFAULT_CAPACITY.times { subject.dock Bike.new }
       DockingStation::DEFAULT_CAPACITY.times { subject.release_bike }
+
       expect { subject.release_bike }.to raise_error 'No bikes available'
     end
 
     it 'does not release a bike when broken' do
       bike = Bike.new()
-      bike.working = false;
+      bike.broken = true
       subject.dock(bike);
 
-      expect { subject.release_bike }.to raise_error "Can not release, bike broken"
+      expect { subject.release_bike }.to raise_error 'No bikes available'
     end 
-    
   end
 
   describe 'dock' do
