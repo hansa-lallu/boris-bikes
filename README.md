@@ -99,7 +99,9 @@ This programme is run on ruby within a REPL such as irb or pry
 
 A docking station has a default capacity of 20, but you can specify a larger capacity on creation:
 
-```docking_station = DockingStation.new(30)```
+```
+docking_station = DockingStation.new(30)
+```
 
 The docking station will raise an error if:
 
