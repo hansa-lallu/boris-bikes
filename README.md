@@ -63,7 +63,7 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 
 ```
 
-# Technologies used
+# Tech Used
 
 - Ruby
 - RSpec
