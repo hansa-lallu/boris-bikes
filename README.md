@@ -1,12 +1,12 @@
-# Boris-bikes
+# Boris-bikes #
 
 
-# Description
+## Description
 
 A program that mimics the functionality of a docking station with boris bikes.
 It will keep track of how many boris bikes are taken and how many spaces are available at the docking station.
 
-# User Stories
+## User Stories
 
 ``` 
 As a person,
@@ -63,12 +63,12 @@ I'd like vans to collect working bikes from garages and distribute them to docki
 
 ```
 
-# Tech Used
+## Tech Used
 
 - Ruby
 - RSpec
 
-# Testing
+## Testing
 
 Tests were written with RSpec. To run the tests in terminal:
 
@@ -77,7 +77,7 @@ $> cd boris-bikes
 $> rspec
 ```
 
-# Installation
+## Installation
 
 - Fork this repository
 - Clone this repository to your local machine
@@ -91,7 +91,7 @@ $ irb
 ```
   
 
-# Usage
+## Usage
 
 This programme is run on ruby within a REPL such as irb or pry
 
@@ -110,7 +110,7 @@ The docking station will raise an error if:
 - You try to release a broken bike
 
 
-# Project Status
+## Project Status
 
 - In progress - Step 20 
 - Last two user stories to be implemented
